@@ -8,4 +8,7 @@ router.post("/", order.createOrder);
 router.put("/:id", order.updateOrder);
 router.delete("/:id", order.deleteOrder);
 
+//this is to get the total for the order
+router.get("/:order_id/total", order.calculateOrderTotal);
+
 module.exports = router;

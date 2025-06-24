@@ -14,19 +14,31 @@ datasource db {
 }
 
 model Product {
-  id            Int   @id @default(autoincrement())
-  name          String  @unique
+  id            Int       @id @default(autoincrement())
+  name          String  
   description   String?
-  price         Int
+  price         Decimal
   image_url     String
   category      String
-  created_at    DateTime @default(now())
+  created_at    DateTime  @default(now())
+  orderItems    OrderItem[]
 }
 
 model Order {
-  id            Int   @id @default(autoincrement())
-  customer      String  @unique
-  total         Int
-  status        String
-  created_at    DateTime @default(now())
+  order_id          Int       @id @default(autoincrement())
+  customer_id       Int
+  total_price       Decimal
+  status            String
+  created_at        DateTime  @default(now())
+  orderItems        OrderItem[]
+}
+
+model OrderItem {
+  id            Int     @id @default(autoincrement())
+  order_id      Int
+  product_id    Int
+  quantity      Int
+  price         Decimal
+  order         Order   @relation(fields: [order_id], references: [order_id])
+  product       Product @relation(fields: [product_id], references: [id])
 }
