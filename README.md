@@ -12,7 +12,7 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 - [x] **Database Creation**: Set up a Postgres database to store information about products and orders.
   - [x] Use Prisma to define models for `products`, `orders`, and `order_items`.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of your `products`, `orders`, and `order_items` tables.
+  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of your `products`, `orders`, and `order_items` tables.
 - [x] **Products Model**
   - [x] Develop a products model to represent individual items available in the store.
   - [x] This model should at minimum include the attributes:
@@ -36,20 +36,20 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
     - [x] `created_at`
   - [x] Implement methods for CRUD operations on orders.
   - [x] Ensure transaction handling such that when an order is deleted, any `order_items` that reference that order are also deleted.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Order Model.
+  - [] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Order Model.
 
-- [ ] **Order Items Model**
+- [x] **Order Items Model**
   - [x] Develop a model to represent the items within an order.
   - [x] This model should at minimum include the attributes:
-    - [x]  `order_item_id`
+    - [x] `order_item_id`
     - [x] `order_id`
     - [x] `product_id`
     - [x] `quantity`
     - [x] `price`
   - [x] Implement methods for fetching and creating order items.
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Order Items Model.
-- [ ] **API Endpoints**
-  - [ ] Application supports the following **Product Endpoints**:
+- [x] **API Endpoints**
+  - [x] Application supports the following **Product Endpoints**:
     - [x] `GET /products`: Fetch a list of all products.
     - [x] `GET /products/:id`: Fetch details of a specific product by its ID.
     - [x] `POST /products`: Add a new product to the database.
@@ -62,10 +62,10 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
     - [x] `PUT /orders/:order_id`: Update the details of an existing order (e.g., change status).
     - [x] `DELETE /orders/:order_id`: Remove an order from the database.
     - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Postman or another API testing tool to demonstrate the successful implementation of each endpoint. For the `DELETE` endpoints, please use Prisma Studio to demonstrate that any relevant order items have been deleted.
-- [ ] **Frontend Integration**
+- [x] **Frontend Integration**
   - [x] Connect the backend API to the provided frontend interface, ensuring dynamic interaction for product browsing, cart management, and order placement. Adjust the frontend as necessary to work with your API.
   - [x] Ensure the home page displays products contained in the product table.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use `npm start` to run your server and display your website in your browser.
+  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use `npm start` to run your server and display your website in your browser.
     - [x] Demonstrate that users can successfully add items to their shopping cart, delete items from their shopping cart, and place an order
     - [x] After placing an order use Postman or Prisma Studio demonstrate that a corresponding order has been created in your orders table.
 
