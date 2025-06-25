@@ -10,10 +10,10 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 #### CORE FEATURES
 
-- [ ] **Database Creation**: Set up a Postgres database to store information about products and orders.
-  - [ ] Use Prisma to define models for `products`, `orders`, and `order_items`.
+- [x] **Database Creation**: Set up a Postgres database to store information about products and orders.
+  - [x] Use Prisma to define models for `products`, `orders`, and `order_items`.
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of your `products`, `orders`, and `order_items` tables.
-- [ ] **Products Model**
+- [x] **Products Model**
   - [x] Develop a products model to represent individual items available in the store.
   - [x] This model should at minimum include the attributes:
     - [x] `id`
@@ -23,8 +23,8 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
     - [x] `image_url`
     - [x] `category`
   - [x] Implement methods for CRUD operations on products.
-  - [] Ensure transaction handling such that when an product is deleted, any `order_items` that reference that product are also deleted.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Products Model.
+  - [x] Ensure transaction handling such that when an product is deleted, any `order_items` that reference that product are also deleted.
+  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Products Model.
 - [x] **Orders Model**
 
   - [x] Develop a model to manage orders.
@@ -35,45 +35,45 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
     - [x] `status`
     - [x] `created_at`
   - [x] Implement methods for CRUD operations on orders.
-  - [] Ensure transaction handling such that when an order is deleted, any `order_items` that reference that order are also deleted.
+  - [x] Ensure transaction handling such that when an order is deleted, any `order_items` that reference that order are also deleted.
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Order Model.
 
 - [ ] **Order Items Model**
-  - [ ] Develop a model to represent the items within an order.
-  - [ ] This model should at minimum include the attributes:
-    - [ ] `order_item_id`
-    - [ ] `order_id`
-    - [ ] `product_id`
-    - [ ] `quantity`
-    - [ ] `price`
-  - [ ] Implement methods for fetching and creating order items.
+  - [x] Develop a model to represent the items within an order.
+  - [x] This model should at minimum include the attributes:
+    - [x]  `order_item_id`
+    - [x] `order_id`
+    - [x] `product_id`
+    - [x] `quantity`
+    - [x] `price`
+  - [x] Implement methods for fetching and creating order items.
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Order Items Model.
 - [ ] **API Endpoints**
   - [ ] Application supports the following **Product Endpoints**:
-    - [ ] `GET /products`: Fetch a list of all products.
-    - [ ] `GET /products/:id`: Fetch details of a specific product by its ID.
-    - [ ] `POST /products`: Add a new product to the database.
-    - [ ] `PUT /products/:id`: Update the details of an existing product.
-    - [ ] `DELETE /products/:id`: Remove a product from the database.
-  - [ ] Application supports the following **Order Endpoints**:
-    - [ ] `GET /orders`: Fetch a list of all orders.
-    - [ ] `GET /orders/:order_id`: Fetch details of a specific order by its ID, including the order items.
-    - [ ] `POST /orders`: Create a new order with specified order items.
-    - [ ] `PUT /orders/:order_id`: Update the details of an existing order (e.g., change status).
-    - [ ] `DELETE /orders/:order_id`: Remove an order from the database.
+    - [x] `GET /products`: Fetch a list of all products.
+    - [x] `GET /products/:id`: Fetch details of a specific product by its ID.
+    - [x] `POST /products`: Add a new product to the database.
+    - [x] `PUT /products/:id`: Update the details of an existing product.
+    - [x] `DELETE /products/:id`: Remove a product from the database.
+  - [x] Application supports the following **Order Endpoints**:
+    - [x] `GET /orders`: Fetch a list of all orders.
+    - [x] `GET /orders/:order_id`: Fetch details of a specific order by its ID, including the order items.
+    - [x] `POST /orders`: Create a new order with specified order items.
+    - [x] `PUT /orders/:order_id`: Update the details of an existing order (e.g., change status).
+    - [x] `DELETE /orders/:order_id`: Remove an order from the database.
     - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Postman or another API testing tool to demonstrate the successful implementation of each endpoint. For the `DELETE` endpoints, please use Prisma Studio to demonstrate that any relevant order items have been deleted.
 - [ ] **Frontend Integration**
-  - [ ] Connect the backend API to the provided frontend interface, ensuring dynamic interaction for product browsing, cart management, and order placement. Adjust the frontend as necessary to work with your API.
-  - [ ] Ensure the home page displays products contained in the product table.
+  - [x] Connect the backend API to the provided frontend interface, ensuring dynamic interaction for product browsing, cart management, and order placement. Adjust the frontend as necessary to work with your API.
+  - [x] Ensure the home page displays products contained in the product table.
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use `npm start` to run your server and display your website in your browser.
-    - [ ] Demonstrate that users can successfully add items to their shopping cart, delete items from their shopping cart, and place an order
-    - [ ] After placing an order use Postman or Prisma Studio demonstrate that a corresponding order has been created in your orders table.
+    - [x] Demonstrate that users can successfully add items to their shopping cart, delete items from their shopping cart, and place an order
+    - [x] After placing an order use Postman or Prisma Studio demonstrate that a corresponding order has been created in your orders table.
 
 ### Stretch Features
 
 - [ ] **Added Endpoints**
-  - [ ] `GET /order-items`: Create an endpoint for fetching all order items in the database.
-  - [ ] `POST /orders/:order_id/items` Create an endpoint that adds a new order item to an existing order.
+  - [x] `GET /order-items`: Create an endpoint for fetching all order items in the database.
+  - [x] `POST /orders/:order_id/items` Create an endpoint that adds a new order item to an existing order.
 - [ ] **Past Orders Page**
   - [ ] Build a page in the UI that displays the list of all past orders.
   - [ ] The page lists all past orders for the user, including relevant information such as:

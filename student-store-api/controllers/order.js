@@ -14,7 +14,7 @@ exports.getAllOrders = async (req, res) => {
 
 //GET ORDERS BY ID
 exports.getOrderById = async (req, res) => {
-  const order_id = Number(req.params.id);
+  const order_id = Number(req.params.order_id);
   try {
     const oneOrder = await prisma.order.findUnique({
       where: { order_id },
@@ -42,7 +42,7 @@ exports.createOrder = async (req, res) => {
 
 //UPDATE AN ORDER
 exports.updateOrder = async (req, res) => {
-  const order_id = Number(req.params.id);
+  const order_id = Number(req.params.order_id);
   const { customer_id, total_price, status } = req.body;
   const updatedOrder = await prisma.order.update({
     where: { order_id },
@@ -53,7 +53,7 @@ exports.updateOrder = async (req, res) => {
 
 //DELETE AN ORDER
 exports.deleteOrder = async (req, res) => {
-  const order_id = Number(req.params.id);
+  const order_id = Number(req.params.order_id);
   await prisma.order.delete({ where: { order_id } });
   res.status(204).end();
 };

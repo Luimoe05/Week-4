@@ -6,22 +6,29 @@ import Sidebar from "../Sidebar/Sidebar";
 import Home from "../Home/Home";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import NotFound from "../NotFound/NotFound";
-import { removeFromCart, addToCart, getQuantityOfItemInCart, getTotalItemsInCart } from "../../utils/cart";
+import {
+  removeFromCart,
+  addToCart,
+  getQuantityOfItemInCart,
+  getTotalItemsInCart,
+} from "../../utils/cart";
 import "./App.css";
+// import { orderItem } from "../../../../student-store-api/model/prismaClient";
 
 function App() {
-
   // State variables
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [userInfo, setUserInfo] = useState({ name: "", dorm_number: ""});
+  const [userInfo, setUserInfo] = useState({ name: "", dorm_number: "" });
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [isFetching, setIsFetching] = useState(false);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [error, setError] = useState(null);
   const [order, setOrder] = useState(null);
+
+  const [orderId, setOrderId] = useState(null);
 
   // Toggles sidebar
   const toggleSidebar = () => setSidebarOpen((isOpen) => !isOpen);
@@ -37,8 +44,65 @@ function App() {
   };
 
   const handleOnCheckout = async () => {
-  }
+    setIsCheckingOut(true);
+    try {
+      //this will hold the dorm number as a INT
+      const dormNum = Number(userInfo.email);
 
+      const newOrder = await axios.post("http://localhost:3000/orders", {
+        customer_id: dormNum || 0,
+        total_price: 0,
+        status: "Pending",
+      });
+
+      const currOrderId = newOrder.data.order_id;
+      setOrderId(currOrderId);
+
+      console.log(currOrderId);
+
+      for (const [stringId, quantity] of Object.entries(cart)) {
+        //this will convert the stringId and cast it to a Number
+        const intId = Number(stringId);
+
+        //this finds the corresponding product
+        const product = products.find((product) => product.id === intId);
+
+        await axios.post(`http://localhost:3000/orderItems/${currOrderId}`, {
+          product_id: intId,
+          quantity: quantity,
+          price: product.price,
+        });
+
+        await axios.put(`http://localhost:3000/orders/${currOrderId}`, {
+          status: "Completed",
+        });
+      }
+      alert("Your order was submited!");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsCheckingOut(false);
+    }
+  };
+
+  //renders the data from the db onto the front end of the website
+  useEffect(() => {
+    setIsFetching(true);
+    const fetchOrderData = async () => {
+      try {
+        // gets the data from the products DB
+        const { data } = await axios.get("http://localhost:3000/products");
+
+        setProducts(data);
+      } catch (error) {
+        setError(error);
+        console.log(error);
+      } finally {
+        setIsFetching(false);
+      }
+    };
+    fetchOrderData();
+  }, []);
 
   return (
     <div className="App">
@@ -97,6 +161,7 @@ function App() {
                 />
               }
             />
+            {/* {movies.map()} */}
             <Route
               path="*"
               element={
@@ -116,4 +181,3 @@ function App() {
 }
 
 export default App;
- 

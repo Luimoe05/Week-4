@@ -1,5 +1,6 @@
 const prisma = require("../model/prismaClient");
 
+// this is the getAllOrderItems
 exports.getAllOrderItems = async (req, res) => {
   try {
     let orderItems = await prisma.orderItem.findMany({
@@ -15,6 +16,7 @@ exports.getAllOrderItems = async (req, res) => {
   }
 };
 
+// this is the create order item
 exports.createOrderItem = async (req, res) => {
   try {
     const orderId = req.params.order_id;
@@ -28,18 +30,17 @@ exports.createOrderItem = async (req, res) => {
     if (!productObject) {
       return res.status(404).json({ error: "The product was not found" });
     }
-    //this will fetch the price
-    const price = productObject.price;
-    console.log("The product price: ", price);
+    //this will fetch the pricex
+    console.log("The product price: ", productObject.price);
 
-    const itemTotal = Number(price) * Number(quantity);
+    const itemTotal = Number(productObject.price) * Number(quantity);
 
     const newOrderItem = await prisma.orderItem.create({
       data: {
         order_id: Number(orderId),
         product_id,
         quantity,
-        price,
+        price: productObject.price,
       },
       include: {
         order: true,
@@ -62,6 +63,7 @@ exports.createOrderItem = async (req, res) => {
   }
 };
 
+// this is the delete order item 
 exports.deleteOrderItem = async (req, res) => {
   try {
     const id = Number(req.params.id);

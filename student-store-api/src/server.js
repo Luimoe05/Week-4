@@ -5,8 +5,15 @@ const app = express();
 const productRoutes = require("../routes/productRoutes");
 const orderRoutes = require("../routes/orderRoutes");
 const orderItemRoutes = require("../routes/orderItemRoutes");
+const cors = require("cors");
 
+const corsOption = {
+  orgin: "http://localhost:5173",
+};
+
+//middleware
 app.use(express.json());
+app.use(cors(corsOption));
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
 app.use("/orderItems", orderItemRoutes);
