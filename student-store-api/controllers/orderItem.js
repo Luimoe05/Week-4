@@ -20,7 +20,7 @@ exports.getAllOrderItems = async (req, res) => {
 exports.createOrderItem = async (req, res) => {
   try {
     const orderId = req.params.order_id;
-    const { product_id, quantity } = req.body;
+    const { product_id, quantity, price } = req.body;
 
     const productObject = await prisma.product.findUnique({
       where: { id: Number(product_id) },
@@ -33,14 +33,14 @@ exports.createOrderItem = async (req, res) => {
     //this will fetch the pricex
     console.log("The product price: ", productObject.price);
 
-    const itemTotal = Number(productObject.price) * Number(quantity);
+    const itemTotal = Number(price) * Number(quantity);
 
     const newOrderItem = await prisma.orderItem.create({
       data: {
         order_id: Number(orderId),
         product_id,
         quantity,
-        price: productObject.price,
+        price: price,
       },
       include: {
         order: true,
@@ -63,7 +63,7 @@ exports.createOrderItem = async (req, res) => {
   }
 };
 
-// this is the delete order item 
+// this is the delete order item
 exports.deleteOrderItem = async (req, res) => {
   try {
     const id = Number(req.params.id);

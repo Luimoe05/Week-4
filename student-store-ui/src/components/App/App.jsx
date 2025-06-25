@@ -29,6 +29,7 @@ function App() {
   const [order, setOrder] = useState(null);
 
   const [orderId, setOrderId] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   // Toggles sidebar
   const toggleSidebar = () => setSidebarOpen((isOpen) => !isOpen);
@@ -46,6 +47,8 @@ function App() {
   const handleOnCheckout = async () => {
     setIsCheckingOut(true);
     try {
+      let totalPrice = 0;
+
       //this will hold the dorm number as a INT
       const dormNum = Number(userInfo.email);
 
@@ -67,22 +70,38 @@ function App() {
         //this finds the corresponding product
         const product = products.find((product) => product.id === intId);
 
+        const priceWithTax =
+          Number(product.price) * 0.0875 + Number(product.price);
+
+        // this adds the current order to the total price
+        totalPrice += priceWithTax * quantity;
+
         await axios.post(`http://localhost:3000/orderItems/${currOrderId}`, {
           product_id: intId,
           quantity: quantity,
-          price: product.price,
-        });
-
-        await axios.put(`http://localhost:3000/orders/${currOrderId}`, {
-          status: "Completed",
+          price: priceWithTax,
         });
       }
+
+      // this will print the total price
+      console.log(totalPrice);
+
+      const roundedPrice = totalPrice.toFixed(2);
+      console.log(roundedPrice);
+
+      await axios.put(`http://localhost:3000/orders/${currOrderId}`, {
+        status: "Completed",
+        total_price: roundedPrice,
+      });
+
       alert("Your order was submited!");
     } catch (error) {
       console.log(error);
     } finally {
       setIsCheckingOut(false);
     }
+
+    setCart({});
   };
 
   //renders the data from the db onto the front end of the website
