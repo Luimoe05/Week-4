@@ -102,12 +102,11 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
 <div>
-    <a href="https://www.loom.com/share/9d1e134ceb2d4491a77b3da96c5f5308">
+    <a href="https://www.loom.com/share/a8c243a0a60543708320a3c4d1af3ce6">
     </a>
-    <a href="https://www.loom.com/share/9d1e134ceb2d4491a77b3da96c5f5308">
-      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9d1e134ceb2d4491a77b3da96c5f5308-2927c788c56094cf-full-play.gif">
+    <a href="https://www.loom.com/share/a8c243a0a60543708320a3c4d1af3ce6">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a8c243a0a60543708320a3c4d1af3ce6-2cc337e3bba871e2-full-play.gif">
     </a>
-
   </div>
 
 ### Reflection
