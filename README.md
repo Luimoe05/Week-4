@@ -71,7 +71,7 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 ### Stretch Features
 
-- [ ] **Added Endpoints**
+- [x] **Added Endpoints**
   - [x] `GET /order-items`: Create an endpoint for fetching all order items in the database.
   - [x] `POST /orders/:order_id/items` Create an endpoint that adds a new order item to an existing order.
 - [ ] **Past Orders Page**
@@ -101,21 +101,28 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-`ADD_EMBEDDED_CODE_HERE`
+<div>
+    <a href="https://www.loom.com/share/9d1e134ceb2d4491a77b3da96c5f5308">
+    </a>
+    <a href="https://www.loom.com/share/9d1e134ceb2d4491a77b3da96c5f5308">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9d1e134ceb2d4491a77b3da96c5f5308-2927c788c56094cf-full-play.gif">
+    </a>
+
+  </div>
 
 ### Reflection
 
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes the topics helped out when working on the assignment.
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+I would like to have made my code neater and changed some of the UI
 
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think that learning everything for the first time went well
 
 ### Open-source libraries used
 

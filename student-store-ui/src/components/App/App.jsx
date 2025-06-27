@@ -20,7 +20,12 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [userInfo, setUserInfo] = useState({ name: "", dorm_number: "" });
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    dorm_number: "",
+    email: "",
+  });
+
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [isFetching, setIsFetching] = useState(false);
@@ -50,7 +55,8 @@ function App() {
       let totalPrice = 0;
 
       //this will hold the dorm number as a INT
-      const dormNum = Number(userInfo.email);
+      const dormNum = Number(userInfo.dorm_number);
+      console.log("This is the user info object", userInfo);
 
       const newOrder = await axios.post("http://localhost:3000/orders", {
         customer_id: dormNum || 0,
@@ -60,8 +66,6 @@ function App() {
 
       const currOrderId = newOrder.data.order_id;
       setOrderId(currOrderId);
-
-      console.log(currOrderId);
 
       for (const [stringId, quantity] of Object.entries(cart)) {
         //this will convert the stringId and cast it to a Number
@@ -83,11 +87,7 @@ function App() {
         });
       }
 
-      // this will print the total price
-      console.log(totalPrice);
-
       const roundedPrice = totalPrice.toFixed(2);
-      console.log(roundedPrice);
 
       await axios.put(`http://localhost:3000/orders/${currOrderId}`, {
         status: "Completed",
@@ -95,13 +95,14 @@ function App() {
       });
 
       alert("Your order was submited!");
+
+      setCart({});
+      setUserInfo({ name: "", dorm_number: "", email: "" });
     } catch (error) {
       console.log(error);
     } finally {
       setIsCheckingOut(false);
     }
-
-    setCart({});
   };
 
   //renders the data from the db onto the front end of the website
